@@ -8,7 +8,7 @@ Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = False
 Attribute VB_Exposed = True
 ''
-' WebAsyncWrapper v4.1.1
+' WebAsyncWrapper v4.1.6
 ' (c) Tim Hall - https://github.com/VBA-tools/VBA-Web
 '
 ' Wrapper WebClient and WebRequest that enables callback-style async requests
@@ -223,7 +223,7 @@ Private Sub web_StartTimeoutTimer()
     End If
 
     WebHelpers.AsyncRequests.Add Me.Request.Id, Me
-    Application.OnTime Now + TimeValue("00:00:" & web_TimeoutS), "'WebHelpers.OnTimeoutTimerExpired """ & Me.Request.Id & """'"
+    Application.OnTime TimeValue(DateAdd("s", web_TimeoutS, Now)), "'WebHelpers.OnTimeoutTimerExpired """ & Me.Request.Id & """'"
 End Sub
 
 ' Stop timeout timer
